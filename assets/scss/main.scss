@@ -8,12 +8,32 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: $body-bg;
+  background-image: url(https://thumbs.gfycat.com/GenuineBitterBichonfrise-size_restricted.gif);
+  background-size: cover;
 }
 
 main {
   flex-grow: 1;
 }
 
+.textShadow{
+  text-shadow: 1px 1px black;
+}
+.columnHeight{
+  min-height: 70vh;
+}
 
+.btnRound{
+  border-radius: 50%;
+}
+.action {
+  cursor: pointer;
+  &:hover{
+    background-color: rgb(194, 194, 194);
+  }
+}
 
+.side-bar-scroll {
+  max-height: 70vh;
+  overflow-y: auto;
+}
