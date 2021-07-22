@@ -65,6 +65,8 @@ class SongsService {
     ProxyState.playlist = ProxyState.playlist.filter(s => s.id != id)
     console.log("i removed this song", res.data)
   }
+
+
 }
 
 const service = new SongsService();

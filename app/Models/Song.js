@@ -13,7 +13,10 @@ export default class Song {
 
   get Template() {
     return `
+
     <div class="col-md-12 d-flex  justify-content-between textShadow align-items-center my-3">
+    <audio id="${this.id}"
+    src="${this.preview}"></audio>
     
     <img src="${this.albumArt}" alt="${this.title}">
     <div class="d-flex flex-column">
@@ -35,9 +38,11 @@ export default class Song {
   get TemplateButton() {
     if (this.kind) {
       return `
-      <button class="btn btn-info" onclick="app.songsController.previewSong('${this.preview}')">Play</button>
+      <span id='${this.id}span'><button class="btn btn-info" onclick="document.getElementById('${this.id}').play();app.songsController.drawPause('${this.id}')">Play</button></span>
+      
       <button class="btn btn-success btnRound" onclick="app.songsController.addToPlaylist('${this.id}')">+</button>
     `}
-    return `<button class="btn btn-danger btnRound" onclick="app.songsController.removeFromPlaylist('${this.id}')">-</button>`
+    return `<span id='${this.id}span'><button class="btn btn-info" onclick="document.getElementById('${this.id}').play();app.songsController.drawPause('${this.id}')">Play</button></span>
+    <button class="btn btn-danger btnRound" onclick="app.songsController.removeFromPlaylist('${this.id}')">-</button>`
   }
 }

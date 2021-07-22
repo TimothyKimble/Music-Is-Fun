@@ -6,8 +6,14 @@ import songService from "../Services/SongsService.js";
 function _drawResults() {
   let songs = ProxyState.songs
   let template = ''
-  songs.forEach(s => template += s.Template)
+  let templateAudio = ''
+  songs.forEach(s => {
+    template += s.Template
+    // templateAudio += s.TemplateAudio
+  })
   document.getElementById('search').innerHTML = template
+
+  // document.getElementById('audio').innerHTML = templateAudio
 
 }
 
@@ -31,6 +37,24 @@ export default class SongsController {
 
   }
 
+  drawPause(id) {
+    console.log('im drawing')
+    let template = ''
+    template += `<button class="btn btn-info" onclick="document.getElementById('${id}').pause();app.songsController.drawPlay('${id}')">Pause</button>`
+
+    document.getElementById(id + 'span').innerHTML = template
+    setTimeout(this.drawPlay, 30000, id)
+    console.log(template);
+
+  }
+
+  drawPlay(id) {
+
+    let template = ''
+    template += `<button class="btn btn-info" onclick="document.getElementById('${id}').play();app.songsController.drawPause('${id}')">Play</button>`
+
+    document.getElementById(id + 'span').innerHTML = template
+  }
   /**Takes in the form submission event and sends the query to the service */
   search(e) {
     //NOTE You dont need to change this method
